@@ -41,3 +41,15 @@ Usage of ./s3-benchmark:
   -upload-csv string
         Uploads the test results to S3 as a CSV file.
 ```
+
+## Example
+
+```
+docker run --rm -it \
+  -e AWS_ACCESS_KEY_ID=... \
+  -e AWS_SECRET_ACCESS_KEY=... \
+  ghcr.io/niklasrosenstein/s3-benchmark:latest \
+  -endpoint https://minio.example.com/bucket/subdir \
+  -create-bucket=false \
+  -bucket-name subsubdir
+```
