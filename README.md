@@ -44,8 +44,10 @@ Usage of ./s3-benchmark:
 
 ## Example
 
+### MinIO
+
 ```
-docker run --rm -it \
+$ docker run --rm -it \
   -e AWS_ACCESS_KEY_ID=... \
   -e AWS_SECRET_ACCESS_KEY=... \
   ghcr.io/niklasrosenstein/s3-benchmark:latest \
@@ -53,3 +55,30 @@ docker run --rm -it \
   -create-bucket=false \
   -bucket-name subsubdir
 ```
+
+### Wasabi
+
+```
+$ REGION=eu-west-1
+$ docker run --rm -it \
+  -e AWS_ACCESS_KEY_ID=... \
+  -e AWS_SECRET_ACCESS_KEY=... \
+  ghcr.io/niklasrosenstein/s3-benchmark:latest \
+  -endpoint https://s3.$REGION.wasabisys.com \
+  -region $REGION \
+  -create-bucket=true
+```
+
+### Vultr
+
+```
+docker run --rm -it \
+  -e AWS_ACCESS_KEY_ID=... \
+  -e AWS_SECRET_ACCESS_KEY=... \
+  ghcr.io/niklasrosenstein/s3-benchmark:latest \
+  -endpoint https://mybucket.ams1.vultrobjects.com \
+  -region ams1 \
+  -bucket-name mybucket
+```
+
+Couldn't get `-creat-bucket=true` to work.
